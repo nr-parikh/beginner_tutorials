@@ -21,6 +21,7 @@ Subscriber::Subscriber() {
  * @brief      Subsriber callback
  *
  */
-void Subscriber::subscriberCallback(const std_msgs::String::ConstPtr& msg) {
+auto Subscriber::subscriberCallback(const std_msgs::String::ConstPtr& msg)
+    -> void {
   ROS_INFO_STREAM("The incoming stream is: " << std::endl << msg->data);
 }

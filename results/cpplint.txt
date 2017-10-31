@@ -1,0 +1,7 @@
+nrparikh@ubuntu:~/catkin_ws/src/beginner_tutorials$ ../cpplint.py --extensions=h,hpp,cpp $( find . -name *.h -or -name *.hpp -or -name *.cpp | grep -vE -e "^./build/" -e "^./vendor/" )
+Done processing ./include/subscriber.hpp
+Done processing ./include/publisher.hpp
+Done processing ./src/main.cpp
+Done processing ./src/publisher.cpp
+Done processing ./src/subscriber.cpp
+Total errors found: 0

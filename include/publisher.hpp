@@ -11,9 +11,10 @@
 #ifndef INCLUDE_PUBLISHER_HPP_
 #define INCLUDE_PUBLISHER_HPP_
 
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <string>
-#include "ros/ros.h"
-#include "std_msgs/String.h"
+
 
 /**
  * @brief      Class for publishing to chatter topic
@@ -24,8 +25,14 @@ class Publisher {
    * @brief      Constructor of the class
    */
   Publisher();
-
-  void publish(const std::string& str);
+  /**
+   * @brief      Method to publish the passed string to chatter topic
+   *
+   * @param[in]  str:   String to be published
+   *
+   * @return     void: Return nothing
+   */
+  auto publish(const std::string& str) -> void;
 
  private:
   ros::NodeHandle nh_;        ///< Node handle for the publisher node

@@ -16,9 +16,9 @@ Publisher::Publisher() {
   publisher_ = nh_.advertise<std_msgs::String>("chatter", 1000);
 }
 /**
- * @brief      Method to publish the string message
+ * @brief      Method to publish the string
  */
-void Publisher::publish(const std::string& str) {
+auto Publisher::publish(const std::string& str) -> void {
   // Set the rate at which messages are to be published
   ros::Rate loop_rate(10);
   // Create a message variable of std_msgs;:String type
