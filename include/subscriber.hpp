@@ -11,8 +11,8 @@
 #ifndef INCLUDE_SUBSCRIBER_HPP_
 #define INCLUDE_SUBSCRIBER_HPP_
 
-#include "ros/ros.h"
-#include "std_msgs/String.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
 
 /**
  * @brief      Class for subscribing to chatter topic
@@ -30,7 +30,7 @@ class Subscriber {
    *
    * @return     void:  Return nothing
    */
-  void subscriberCallback(const std_msgs::String::ConstPtr& msg);
+  auto subscriberCallback(const std_msgs::String::ConstPtr& msg) -> void;
 
  private:
   ros::NodeHandle nh_;          ///< Node handle for the subscriber node
