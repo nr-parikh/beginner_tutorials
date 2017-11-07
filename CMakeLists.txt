@@ -8,8 +8,11 @@ project(beginner_tutorials)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  rospy
   roscpp
   std_msgs
+  genmsg
+  message_generation
 )
 
 set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
@@ -55,11 +58,10 @@ set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+ add_service_files(
+  FILES
+  change_text.srv
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -69,10 +71,10 @@ set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -135,7 +137,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(main_node src/main.cpp src/publisher.cpp src/subscriber.cpp) 
+add_executable(publisher_node src/publisher.cpp src/publisher_main.cpp)
+add_executable(subscriber_node src/subscriber.cpp src/subscriber_main.cpp) 
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -147,16 +150,19 @@ add_executable(main_node src/main.cpp src/publisher.cpp src/subscriber.cpp)
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+add_dependencies(publisher_node beginner_tutorials_generate_messages_cpp)
+add_dependencies(subscriber_node beginner_tutorials_generate_messages_cpp)
+
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(publisher_node
-#    ${catkin_LIBRARIES}
-# )
-# target_link_libraries(subscriber_node
-#    ${catkin_LIBRARIES}
-# )
-target_link_libraries(main_node
+target_link_libraries(publisher_node
    ${catkin_LIBRARIES}
 )
+target_link_libraries(subscriber_node
+   ${catkin_LIBRARIES}
+)
+# target_link_libraries(main_node
+#    ${catkin_LIBRARIES}
+# )
 #############
 ## Install ##
 #############

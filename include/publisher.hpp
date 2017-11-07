@@ -14,7 +14,7 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <string>
-
+#include "beginner_tutorials/change_text.h"
 
 /**
  * @brief      Class for publishing to chatter topic
@@ -24,7 +24,7 @@ class Publisher {
   /**
    * @brief      Constructor of the class
    */
-  Publisher();
+  Publisher(const std::string& str);
   /**
    * @brief      Method to publish the passed string to chatter topic
    *
@@ -32,7 +32,18 @@ class Publisher {
    *
    * @return     void: Return nothing
    */
-  auto publish(const std::string& str) -> void;
+  auto publish() -> void;
+  /**
+   * @brief      Function for service callback. Change the text being published
+   * on chatter topic
+   *
+   * @param      request:  Request of Service
+   * @param      resp:     Response of Service
+   *
+   * @return     bool:     Return true if service callback was successful
+   */
+  auto changeText(beginner_tutorials::change_text::Request& request,
+                  beginner_tutorials::change_text::Response& resp) -> bool;
 
  private:
   ros::NodeHandle nh_;        ///< Node handle for the publisher node
