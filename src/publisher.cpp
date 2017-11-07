@@ -22,7 +22,10 @@ Publisher::Publisher(const std::string& str) {
  * @brief      Sets the string to be published
  *
  */
-auto Publisher::setText(const std::string& str) -> void { text_ = str; }
+auto Publisher::setText(const std::string& str) -> void { 
+  text_ = str; 
+  ROS_INFO_STREAM(">>>>>>>"<<text_);
+}
 /**
  * @brief      Method to publish the string
  */

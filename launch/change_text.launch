@@ -1,0 +1,7 @@
+<launch>
+    <arg name="str" default="Launching-from-launch-file."/>
+
+    <node pkg="beginner_tutorials" name="publisher" type="publisher_node" output="screen" args="$(arg str)" />
+
+    <node pkg="beginner_tutorials" name="subscriber" type="subscriber_node" output="screen" />
+</launch>
