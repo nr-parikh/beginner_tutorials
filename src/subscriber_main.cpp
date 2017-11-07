@@ -8,8 +8,8 @@
  * and set callbacks.
  *
  */
-#include <string>
 #include "beginner_tutorials/change_text.h"
+#include <string>
 #include "subscriber.hpp"
 
 int main(int argc, char **argv) {

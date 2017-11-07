@@ -13,6 +13,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
+#include <beginner_tutorials/change_text.h>
 
 /**
  * @brief      Class for subscribing to chatter topic

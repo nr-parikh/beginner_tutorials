@@ -13,8 +13,8 @@
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-#include <string>
 #include "beginner_tutorials/change_text.h"
+#include <string>
 
 /**
  * @brief      Class for publishing to chatter topic
@@ -24,7 +24,9 @@ class Publisher {
   /**
    * @brief      Constructor of the class
    */
-  Publisher(const std::string& str);
+  explicit Publisher(const std::string& str);
+
+  auto setText(const std::string& str) -> void;
   /**
    * @brief      Method to publish the passed string to chatter topic
    *

@@ -8,6 +8,7 @@
  *
  */
 
+#include <string>
 #include "subscriber.hpp"
 /**
  * @brief      Constructs the object of the class.

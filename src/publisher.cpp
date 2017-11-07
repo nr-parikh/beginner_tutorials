@@ -7,16 +7,22 @@
  * Class implementation for Publisher
  *
  */
-#include "publisher.hpp"
-#include <string>
 #include "beginner_tutorials/change_text.h"
+#include <string>
+#include "publisher.hpp"
+
 /**
  * @brief      Constructs the publisher object.
  */
 Publisher::Publisher(const std::string& str) {
-  text_ = str;
   publisher_ = nh_.advertise<std_msgs::String>("chatter", 1000);
+  setText(str);
 }
+/**
+ * @brief      Sets the string to be published
+ *
+ */
+auto Publisher::setText(const std::string& str) -> void { text_ = str; }
 /**
  * @brief      Method to publish the string
  */
