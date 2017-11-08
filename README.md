@@ -58,18 +58,43 @@ The code can be built by cloning the repository and executing following steps:
 
 ## Running the code
 
-The code contains only has one node which publishes and subscribes to *chatter* topic. To run the code, ensure *rosmaster* is running. If it is not running, it can be started in a new terminal by executing `$ roscore`.
-In another terminal, execute following command to run the node:
+This week's tutorials deal with *services* and *launch* files. Launch files are very useful in case where multiple nodes needs to be started from within the package. One can also set the arguments of the nodes from within the launch files. The file *change_text.launch* does that. If the nodes are being launched from the launch file, the messages being published will be different than the messages being published if nodes were started individually using *rosrun* commands. 
+
+*Services* are also a very useful tool of ROS. While publisher/subscriber communication model is very useful for continuous communication, server/client communication has its own uses. Server/client model is very useful when one has to execute certain process only if the need arises by requesting the *service*. This code has a service called *change_text* which can be used whenever one wants to change the message being published. It takes an input the string which needs to be published and responses with a *bool* value.
+
+### Running using *rosrun* commands
+Please ensure that *rosmaster* is running before executing following steps. *rosmaster* can be started by following command.
 ```
-$ rosrun beginner_tutorials main_node
+<home>$ roscore
 ```
 
-The output of the code is looks like follows:
+To start the *publisher* node follow the steps given below:
 ```
-[ INFO] [1509418147.690176981]: The incoming stream is: 
-Welcome to ENPM808X, Fall 2017!
-[ INFO] [1509418147.790819165]: The incoming stream is: 
-Welcome to ENPM808X, Fall 2017!
-[ INFO] [1509418147.890154578]: The incoming stream is: 
-Welcome to ENPM808X, Fall 2017!
+<home>$ rosrun beginner_tutorials pulisher_node
+```
+
+*subscriber* node can be started by following commands:
+```
+<home>$ rosrun beginner_tutorials subscriber_node
+```
+
+Starting the nodes using the steps above, prints out `Welcome to ENPM808X, Fall 2017!` on the console. 
+
+### Running using *roslaunch* 
+To start both the nodes with a single command, *launch* file can be created and used to launch both the nodes. To *launch* both nodes execute following command:
+```
+<home>$ roslaunch beginner_tutorials change_text.launch 
+```
+
+Please note here that it is not mandatory to start *rosmaster* node while using *launch* file. It starts when the file is launched if it is not running.
+
+### Calling the service 
+Service can be called from the *terminal* when both the nodes are running. This is necessary because *publisher* node is the server for service while *subscriber* node is client of the service. Thus, in order for the service to execute properly both server and client should run properly.
+```
+<home>$ rosservice call /change_text <string to be published>
+```
+
+Consider for examply one wants to change the message being published to `This is beginner_tutorials.` This can be done as follows:
+```
+<home>$ rosservice call /change_text "This is beginner_tutorials."
 ```
