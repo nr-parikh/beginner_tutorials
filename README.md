@@ -86,7 +86,12 @@ To start both the nodes with a single command, *launch* file can be created and 
 <home>$ roslaunch beginner_tutorials change_text.launch 
 ```
 
-Please note here that it is not mandatory to start *rosmaster* node while using *launch* file. It starts when the file is launched if it is not running.
+Please note here that it is not mandatory to start *rosmaster* node while using *launch* file. It starts when the file is launched if it is not running. The command above will launch the node with default string in the launch file. To pass the custom string to launch file use the following command:
+```
+<home>$ roslaunch beginner_tutorials change_text.launch str:="Passing-parameter-to-launch-file."
+```
+
+Please note that while passing the parameter to launch file the string should be a single cannot contain whitespaces. 
 
 ### Calling the service 
 Service can be called from the *terminal* when both the nodes are running. This is necessary because *publisher* node is the server for service while *subscriber* node is client of the service. Thus, in order for the service to execute properly both server and client should run properly.
