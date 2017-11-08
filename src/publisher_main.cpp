@@ -11,6 +11,7 @@
  */
 
 #include <string>
+#include "beginner_tutorials/change_text.h"
 #include "publisher.hpp"
 
 int main(int argc, char **argv) {

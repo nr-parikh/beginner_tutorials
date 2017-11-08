@@ -13,8 +13,9 @@
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-#include "beginner_tutorials/change_text.h"
 #include <string>
+#include "beginner_tutorials/change_text.h"
+
 
 /**
  * @brief      Class for publishing to chatter topic

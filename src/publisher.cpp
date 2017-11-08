@@ -7,8 +7,9 @@
  * Class implementation for Publisher
  *
  */
-#include "beginner_tutorials/change_text.h"
+
 #include <string>
+#include "beginner_tutorials/change_text.h"
 #include "publisher.hpp"
 
 /**
@@ -22,10 +23,7 @@ Publisher::Publisher(const std::string& str) {
  * @brief      Sets the string to be published
  *
  */
-auto Publisher::setText(const std::string& str) -> void { 
-  text_ = str; 
-  ROS_INFO_STREAM(">>>>>>>"<<text_);
-}
+auto Publisher::setText(const std::string& str) -> void { text_ = str; }
 /**
  * @brief      Method to publish the string
  */
