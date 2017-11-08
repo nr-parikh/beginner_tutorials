@@ -98,3 +98,9 @@ Consider for examply one wants to change the message being published to `This is
 ```
 <home>$ rosservice call /change_text "This is beginner_tutorials."
 ```
+
+### Launching logger GUI
+Logger GUI can be used to check the logged messages. To launch logger GUI, run the following lines:
+```
+<home>$ rosrun rqt_console rqt_console
+```
