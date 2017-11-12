@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     ROS_DEBUG_STREAM("Service is running.");
   }
   // Log information until server is not available
-  if (ros::service::waitForService("change_text", 10000)) {
+  if (ros::service::waitForService("change_text", 1000)) {
     ROS_DEBUG_STREAM("Server is available.");
   } else {
     ROS_ERROR_STREAM("Waiting for server to run.");
