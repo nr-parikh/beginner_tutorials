@@ -65,7 +65,7 @@ auto Publisher::publish() -> void {
   tf::Quaternion quaternion;
   // Set origin of the publisher frame
   transform.setOrigin(tf::Vector3(1.0, 1.0, 1.0));
-  // Set rotation value 
+  // Set rotation value
   quaternion.setRPY(0, 0, 3.14);
   // Set the transform
   transform.setRotation(quaternion);

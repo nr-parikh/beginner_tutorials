@@ -50,10 +50,10 @@ TEST(TESTSuite, transformTest) {
   // Wait till the transform is published
   if (listener.waitForTransform("world", "publisher", ros::Time(0),
                                 ros::Duration(100))) {
-  	// Get the value of the published transform
+    // Get the value of the published transform
     listener.lookupTransform("world", "publisher", ros::Time(0), transform);
 
-	// Check the values of the published transform 
+    // Check the values of the published transform
     EXPECT_EQ(1.0, transform.getOrigin().x());
     EXPECT_EQ(1.0, transform.getOrigin().x());
     EXPECT_EQ(1.0, transform.getOrigin().x());
